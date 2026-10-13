@@ -1,0 +1,484 @@
+/* Google Fonts Import: Cormorant Garamond & Plus Jakarta Sans */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+/* Brand Design Tokens matching DESIGN.md & SKILL.md */
+:root {
+  --color-text-primary: #2C1A11;
+  --color-text-secondary: #D5C5B5;
+  --color-text-tertiary: #FAF6F0;
+  --color-text-inverse: #7A6248;
+  --color-surface-base: #FAF6F0;
+  --color-surface-muted: #EFE7DA;
+  --color-border-default: #E5E7EB;
+  --color-border-strong: #E8DEC8;
+  --color-accent-gold: #C88E52;
+  --color-accent-brown: #8C5238;
+  --motion-duration-fast: 150ms;
+  --motion-duration-smooth: 300ms;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--color-text-primary);
+  background-color: var(--color-surface-base);
+  overflow-x: clip;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Dedicated Sticky Site Header */
+.site-header {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 50 !important;
+  background-color: rgba(250, 246, 240, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(239, 229, 216, 0.85);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Typography Rules */
+h1, h2, h3, h4, h5, h6, .font-serif {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+}
+
+.font-sans {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif !important;
+}
+
+.story-headline {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 1.85rem !important;
+  line-height: 1.5 !important;
+  letter-spacing: -0.01em !important;
+  font-weight: 400 !important;
+  color: #2C1A11 !important;
+}
+
+@media (min-width: 640px) {
+  .story-headline {
+    font-size: 2.25rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
+/* Accessibility: WCAG 2.2 AA Focus-Visible Ring Indicator */
+*:focus-visible {
+  outline: 2px solid var(--color-text-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--color-accent-brown);
+  outline-offset: 3px;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface-base);
+}
+::-webkit-scrollbar-thumb {
+  background: #D8CEBE;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-primary);
+}
+
+/* Hide Scrollbar Utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Signature Arched Border Radii */
+.rounded-arch {
+  border-radius: 120px 120px 24px 24px;
+}
+.rounded-arch-lg {
+  border-radius: 140px 140px 32px 32px;
+}
+
+/* Infinite Marquee Keyframe Animations */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 50s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Preloader Exit Animation */
+.preloader-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Scroll-Driven Quality Process Line */
+.timeline-track-line {
+  position: absolute;
+  left: 32px;
+  transform: translateX(-50%);
+  width: 2px;
+  background-color: #4D3628;
+  z-index: 1;
+  margin-top: 0 !important;
+}
+
+.timeline-progress-line {
+  position: absolute;
+  left: 32px;
+  transform: translateX(-50%);
+  width: 2.5px;
+  background-color: #C88E52;
+  box-shadow: 0 0 12px rgba(200, 142, 82, 0.9);
+  z-index: 10;
+  transition: height 0.1s linear;
+  margin-top: 0 !important;
+}
+
+/* Timeline Step Node Container (Guaranteed 32px Perfect Circle) */
+.timeline-step-node {
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  min-height: 32px !important;
+  max-width: 32px !important;
+  max-height: 32px !important;
+  aspect-ratio: 1 / 1 !important;
+  border-radius: 9999px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 20;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  border: none;
+  box-sizing: border-box !important;
+  box-shadow: none;
+}
+
+/* Inactive State: Displays small 10px circular dot inside 32px container */
+.timeline-step-node::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background-color: #D5C5B5;
+  border: 2px solid #2C1A11;
+  box-shadow: 0 0 0 1px #4D3628;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.timeline-step-node i, .timeline-step-node svg {
+  display: none !important;
+  opacity: 0;
+}
+
+/* Active State: Container becomes warm gold filled badge with dark checkmark */
+.timeline-step-node.active {
+  background-color: #C88E52 !important;
+  border: 2px solid #C88E52 !important;
+  color: #2C1A11 !important;
+  box-shadow: 0 0 20px rgba(200, 142, 82, 0.8), 0 0 0 6px rgba(200, 142, 82, 0.15) !important;
+}
+
+.timeline-step-node.active::before {
+  display: none !important;
+}
+
+.timeline-step-node.active i, .timeline-step-node.active svg {
+  display: block !important;
+  opacity: 1;
+  width: 16px !important;
+  height: 16px !important;
+  color: #2C1A11 !important;
+  stroke-width: 2.5;
+}
+
+/* Timeline Card Base, Active & Luxurious Hover States */
+.timeline-step-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.35s ease, 
+              background-color 0.35s ease, 
+              box-shadow 0.35s ease;
+  border: 1px solid rgba(77, 54, 40, 0.5);
+  background-color: #26170F;
+}
+
+.timeline-step-card i,
+.timeline-step-card svg {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.timeline-step-card.active-card {
+  border-color: rgba(200, 142, 82, 0.6);
+  background-color: #352116;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.timeline-step-card:hover,
+.group:hover .timeline-step-card {
+  transform: translateY(-5px);
+  border-color: rgba(200, 142, 82, 0.85);
+  background-color: #3D2619;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 0 25px rgba(200, 142, 82, 0.2);
+}
+
+.group:hover .timeline-step-card i,
+.group:hover .timeline-step-card svg {
+  transform: scale(1.15);
+}
+
+/* Hero Category Auto-Carousel Transitions */
+#hero-product-image {
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+#hero-product-title,
+#hero-product-subtitle {
+  transition: opacity 0.35s ease;
+  will-change: opacity;
+}
+
+/* Drawer Transitions */
+.drawer-backdrop {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), backdrop-filter 0.4s ease;
+}
+.drawer-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drawer-panel {
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+  will-change: transform;
+}
+.drawer-panel.active {
+  transform: translateX(0);
+  box-shadow: -20px 0 60px rgba(44, 26, 17, 0.25);
+}
+
+/* Luxury Navigation Drawer Animations */
+.nav-header-elem {
+  opacity: 0;
+  transform: translateY(-12px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.drawer-panel.active .nav-header-elem {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 80ms;
+}
+
+.nav-menu-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  transform: translateX(36px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.3s ease,
+              letter-spacing 0.3s ease;
+  will-change: opacity, transform, color;
+}
+
+/* Stagger sequence when menu opens */
+.drawer-panel.active .nav-menu-link {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.drawer-panel.active .nav-menu-link:nth-child(1) { transition-delay: 130ms; }
+.drawer-panel.active .nav-menu-link:nth-child(2) { transition-delay: 200ms; }
+.drawer-panel.active .nav-menu-link:nth-child(3) { transition-delay: 270ms; }
+.drawer-panel.active .nav-menu-link:nth-child(4) { transition-delay: 340ms; }
+.drawer-panel.active .nav-menu-link:nth-child(5) { transition-delay: 410ms; }
+
+/* Elegant Gold Accent Pill on Hover & Active */
+.nav-menu-link::before {
+  content: '';
+  display: inline-block;
+  width: 0px;
+  height: 3px;
+  background: linear-gradient(90deg, #C88E52, #8C5238);
+  border-radius: 99px;
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+  opacity: 0;
+}
+
+.nav-menu-link:hover::before,
+.nav-menu-link.active-link::before {
+  width: 24px;
+  opacity: 1;
+}
+
+.nav-menu-link:hover {
+  color: #8C5238 !important;
+  transform: translateX(8px) !important;
+  letter-spacing: 0.02em;
+}
+
+/* Selection Flash Pulse Animation when an option is clicked */
+.nav-menu-link.nav-selecting {
+  color: #C88E52 !important;
+  transform: translateX(16px) scale(1.04) !important;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), color 0.22s ease !important;
+}
+
+.nav-menu-link.nav-selecting::before {
+  width: 32px !important;
+  opacity: 1 !important;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Micro-Interactions & Hover Transformations */
+.btn-hover-lift {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, box-shadow 0.3s ease;
+}
+.btn-hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(44, 26, 17, 0.15);
+}
+.btn-hover-lift:active {
+  transform: scale(0.98);
+}
+
+/* Luxury Editorial Scroll Reveal System */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(4px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.85s ease;
+  will-change: opacity, transform, filter;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0px);
+}
+
+.reveal-image {
+  opacity: 0;
+  transform: scale(1.06);
+  filter: blur(6px);
+  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 1.1s ease;
+  will-change: opacity, transform, filter;
+}
+
+.reveal-image.is-revealed {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0px);
+}
+
+/* Stagger Delays for Grid Elements */
+.reveal-delay-100 { transition-delay: 100ms !important; }
+.reveal-delay-200 { transition-delay: 200ms !important; }
+.reveal-delay-300 { transition-delay: 300ms !important; }
+.reveal-delay-400 { transition-delay: 400ms !important; }
+.reveal-delay-500 { transition-delay: 500ms !important; }
+
+/* Dedicated Container Reveal & Image Reveal for Category Cards */
+.category-card-container {
+  opacity: 0;
+  transform: translateY(36px) scale(0.96);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.category-card-container.is-revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.category-card-img {
+  opacity: 0;
+  transform: scale(1.18);
+  filter: blur(8px);
+  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform, filter;
+}
+
+.category-card-container.is-revealed .category-card-img {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0px);
+}
+
+/* Admin Suite & Inventory Management Styles */
+.product-out-of-stock {
+  opacity: 0.8;
+}
+.product-out-of-stock img {
+  filter: grayscale(0.4) opacity(0.85);
+}
+
+.admin-tab-btn.active {
+  background-color: #2C1A11 !important;
+  color: #FAF6F0 !important;
+}
+
+.stock-toggle-btn {
+  transition: all 0.2s ease;
+}
+.stock-toggle-btn.in-stock {
+  background-color: #D1FAE5;
+  color: #065F46;
+  border-color: #A7F3D0;
+}
+.stock-toggle-btn.out-of-stock {
+  background-color: #FEE2E2;
+  color: #991B1B;
+  border-color: #FCA5A5;
+}

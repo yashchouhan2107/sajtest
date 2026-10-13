@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAJ Organics — Made For The Modern Lifestyle.</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="./images/favicon.png" />
+  <link rel="apple-touch-icon" href="./images/favicon.png" />
+
+  <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-[#FAF6F0] text-[#2C1A11] antialiased selection:bg-[#3D2517] selection:text-[#FAF6F0]">
+
+  <!-- 1. Luxury Preloader Overlay -->
+  <div id="preloader" class="fixed inset-0 z-50 bg-[#FAF6F0] flex flex-col items-center justify-between p-8 sm:p-12 select-none">
+    <div class="text-xs text-[#7A6248] tracking-[0.3em] uppercase font-medium">
+      SAJ Organics • Made For The Modern Lifestyle
+    </div>
+
+    <div class="flex flex-col items-center gap-4 text-center">
+      <!-- Brand Emblem Logo -->
+      <div class="flex flex-col items-center">
+        <img src="./images/saj_logo_transparent.png" alt="SAJ Organics" class="w-36 h-36 sm:w-44 sm:h-44 object-contain filter drop-shadow-md mb-2" />
+        <p class="font-serif italic text-lg sm:text-xl text-[#6E5C52] tracking-wide mt-1">Made For The Modern Lifestyle</p>
+      </div>
+
+      <div class="w-48 sm:w-64 h-1 bg-[#EFE5D8] rounded-full overflow-hidden mt-4 relative">
+        <div id="preloader-progress" class="h-full bg-[#8C5238] rounded-full w-0 transition-all duration-200"></div>
+      </div>
+      <span id="preloader-percent" class="font-serif text-sm font-semibold text-[#2C1A11] tracking-widest">0%</span>
+    </div>
+
+    <div class="text-[11px] text-[#7A6248] tracking-widest uppercase text-center flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2">
+      <span>Hand-picked • Small Batches • Resealable Pouches</span>
+      <span class="hidden sm:inline">•</span>
+      <span class="text-[#8C5238] font-semibold">FSSAI Lic. No. 21426115000352</span>
+    </div>
+  </div>
+
+  <!-- 2. Sticky Header Bar -->
+  <header class="site-header sticky top-0 z-40 w-full transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo Image with Side-by-Side Tagline -->
+      <a href="#" class="flex items-center gap-3 group">
+        <img src="./images/saj_logo_transparent.png" alt="SAJ Organics Logo" class="w-12 h-12 sm:w-16 sm:h-16 object-contain transition-transform duration-500 group-hover:scale-105" />
+        <span class="hidden sm:inline text-[9px] sm:text-[11px] tracking-[0.2em] uppercase text-[#8C5238] font-semibold whitespace-nowrap">Made For The Modern Lifestyle</span>
+      </a>
+
+      <!-- Action Controls -->
+      <div class="flex items-center gap-2 sm:gap-4">
+        <button onclick="openSearch()" aria-label="Search" class="p-2 text-[#2C1A11] hover:text-[#7A6248] transition-colors rounded-full hover:bg-[#EFE5D8]/50">
+          <i data-lucide="search" class="w-5 h-5"></i>
+        </button>
+
+        <button onclick="openCart()" aria-label="Bag" class="relative p-2 text-[#2C1A11] hover:text-[#7A6248] transition-colors rounded-full hover:bg-[#EFE5D8]/50">
+          <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+          <span id="cart-badge" class="absolute top-1 right-1 w-4.5 h-4.5 rounded-full bg-[#8C5238] text-white text-[10px] font-bold items-center justify-center" style="display: none;">0</span>
+        </button>
+
+        <button onclick="openNav()" aria-label="Open menu" class="p-2 text-[#2C1A11] hover:text-[#7A6248] transition-colors rounded-full hover:bg-[#EFE5D8]/50 ml-1">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- 3. Hero Section -->
+  <section id="hero" class="relative pt-6 sm:pt-10 pb-16 px-4 sm:px-6 overflow-hidden">
+    <div class="max-w-4xl mx-auto flex flex-col items-center text-center">
+      
+      <!-- Big Center Brand Logo -->
+      <div class="flex flex-col items-center mb-6 reveal-on-scroll">
+        <img src="./images/saj_logo_transparent.png" alt="SAJ Organics Logo" class="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 object-contain filter drop-shadow-md transition-transform duration-700 hover:scale-105" />
+        <span class="text-xs sm:text-sm tracking-[0.25em] uppercase text-[#8C5238] font-semibold mt-2">Made For The Modern Lifestyle</span>
+      </div>
+
+      <h1 class="font-serif text-5xl sm:text-7xl lg:text-8xl font-normal text-[#2C1A11] tracking-tight leading-[1.05] mb-8 max-w-3xl reveal-on-scroll">
+        Packed With Nature's<br class="hidden sm:inline" />Goodness.
+      </h1>
+
+      <div class="relative w-full max-w-sm sm:max-w-md my-4 reveal-image reveal-delay-100">
+        <!-- Arched Frame Pouch Container (Edge-to-Edge Fitted Image) -->
+        <div class="relative w-full max-w-md sm:max-w-lg aspect-[4/5] rounded-t-[160px] rounded-b-3xl bg-[#EFE5D8] shadow-md border border-[#E8DEC8] overflow-hidden">
+          <img id="hero-product-image" src="./images/daily_dose_master.jpg" alt="SAJ Daily Dose" class="w-full h-full object-cover object-center rounded-t-[160px] rounded-b-3xl filter drop-shadow-md transition-all duration-500" onerror="this.src='./images/daily_dose_master.jpg'" />
+        </div>
+
+        <div class="mt-4 flex flex-col items-center">
+          <h4 id="hero-product-title" class="font-serif text-2xl sm:text-3xl font-medium text-[#2C1A11] leading-tight">Daily Dose</h4>
+          <p id="hero-product-subtitle" class="text-sm text-[#7A6248] tracking-wide mt-0.5">Everyday Vitality Mix</p>
+          <!-- 11 Mixes Carousel Indicators -->
+          <div id="hero-carousel-dots" class="flex items-center justify-center gap-1.5 mt-3" aria-label="Mixes carousel navigation"></div>
+        </div>
+      </div>
+
+      <p class="mt-8 text-base sm:text-lg text-[#6E5C52] max-w-xl font-normal leading-relaxed reveal-on-scroll reveal-delay-200">
+        Almonds, cashews, dates and seeds, chosen with care and packed in small batches, so every handful tastes as fresh as it should.
+      </p>
+
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto reveal-on-scroll reveal-delay-300">
+        <a href="#shop" class="w-full sm:w-auto px-8 py-3.5 bg-[#2C1A11] text-[#FAF6F0] hover:bg-[#3D2517] font-medium text-base rounded-full shadow-md transition-colors text-center btn-hover-lift">
+          Shop collection
+        </a>
+        <a href="#story" class="w-full sm:w-auto px-8 py-3.5 bg-transparent border border-[#2C1A11]/30 text-[#2C1A11] hover:border-[#2C1A11] font-medium text-base rounded-full transition-colors hover:bg-[#EFE5D8]/40 text-center btn-hover-lift">
+          Explore SAJ
+        </a>
+      </div>
+
+      <!-- Trust Badges -->
+      <div class="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-3 w-full max-w-4xl text-left reveal-on-scroll reveal-delay-400">
+        <div class="flex items-center gap-3 p-3 rounded-2xl bg-[#EFE5D8]/60 border border-[#E8DEC8]/80">
+          <span class="text-xl p-2 rounded-xl bg-[#FAF6F0] text-[#2C1A11]">📦</span>
+          <span class="text-xs sm:text-sm font-medium text-[#2C1A11]">Packed in small batches</span>
+        </div>
+        <div class="flex items-center gap-3 p-3 rounded-2xl bg-[#EFE5D8]/60 border border-[#E8DEC8]/80">
+          <span class="text-xl p-2 rounded-xl bg-[#FAF6F0] text-[#2C1A11]">🔄</span>
+          <span class="text-xs sm:text-sm font-medium text-[#2C1A11]">Resealable pouches</span>
+        </div>
+        <div class="flex items-center gap-3 p-3 rounded-2xl bg-[#EFE5D8]/60 border border-[#E8DEC8]/80">
+          <span class="text-xl p-2 rounded-xl bg-[#FAF6F0] text-[#2C1A11]">🚚</span>
+          <span class="text-xs sm:text-sm font-medium text-[#2C1A11]">Free delivery over ₹1,999</span>
+        </div>
+        <div class="flex items-center gap-3 p-3 rounded-2xl bg-[#EFE5D8]/60 border border-[#E8DEC8]/80">
+          <span class="text-xl p-2 rounded-xl bg-[#FAF6F0] text-[#2C1A11]">🛡️</span>
+          <div class="flex flex-col">
+            <span class="text-xs sm:text-sm font-semibold text-[#2C1A11]">FSSAI Certified</span>
+            <span class="text-[10px] text-[#8C5238] font-mono leading-none">Lic. 21426115000352</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4. Infinite Marquee Banner 1 -->
+  <div class="w-full overflow-hidden py-4 bg-[#2C1A11] text-[#FAF6F0] border-y border-[#3D2517] shadow-inner select-none relative z-20">
+    <div class="animate-marquee">
+      <div class="flex items-center gap-8 text-xs sm:text-sm font-semibold tracking-[0.25em] uppercase px-4 whitespace-nowrap">
+        <span>100% ORGANIC & FRESH</span><span class="text-[#C88E52]">✦</span>
+        <span>HAND-PICKED SMALL BATCHES</span><span class="text-[#C88E52]">✦</span>
+        <span>RESEALABLE ECO POUCHES</span><span class="text-[#C88E52]">✦</span>
+        <span>NO ADDED PRESERVATIVES</span><span class="text-[#C88E52]">✦</span>
+        <span>EXPRESS NATIONWIDE SHIPPING</span><span class="text-[#C88E52]">✦</span>
+        <span>SUSTAINABLE PACKAGING</span><span class="text-[#C88E52]">✦</span>
+        <span>PREMIUM SINGLE ORIGIN</span><span class="text-[#C88E52]">✦</span>
+      </div>
+      <div class="flex items-center gap-8 text-xs sm:text-sm font-semibold tracking-[0.25em] uppercase px-4 whitespace-nowrap">
+        <span>100% ORGANIC & FRESH</span><span class="text-[#C88E52]">✦</span>
+        <span>HAND-PICKED SMALL BATCHES</span><span class="text-[#C88E52]">✦</span>
+        <span>RESEALABLE ECO POUCHES</span><span class="text-[#C88E52]">✦</span>
+        <span>NO ADDED PRESERVATIVES</span><span class="text-[#C88E52]">✦</span>
+        <span>EXPRESS NATIONWIDE SHIPPING</span><span class="text-[#C88E52]">✦</span>
+        <span>SUSTAINABLE PACKAGING</span><span class="text-[#C88E52]">✦</span>
+        <span>PREMIUM SINGLE ORIGIN</span><span class="text-[#C88E52]">✦</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Categories Section -->
+  <section id="categories" class="py-16 px-4 sm:px-6 bg-[#FAF6F0]">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-10 text-left max-w-xl reveal-on-scroll">
+        <h2 class="font-serif text-4xl sm:text-6xl font-normal text-[#2C1A11] tracking-tight leading-tight">
+          A pantry worth opening.
+        </h2>
+        <p class="mt-4 text-base text-[#6E5C52] font-normal">
+          Handcrafted daily superfood mixes and luxury gifting, chosen with care.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 max-w-2xl gap-6 sm:gap-8">
+        <!-- Mixes Category Card -->
+        <div onclick="filterCategory('Mixes'); location.href='#shop';" class="group cursor-pointer flex flex-col items-start category-card-container reveal-delay-100">
+          <div class="w-full aspect-[4/5] rounded-t-[100px] rounded-b-2xl p-1 bg-[#EFE5D8] shadow-sm border border-[#E8DEC8]/80 relative overflow-hidden transition-all duration-300 group-hover:-translate-y-1.5">
+            <img src="./images/daily_dose_master.jpg" alt="Mixes" class="category-card-img w-full h-full object-cover rounded-t-[100px] rounded-b-2xl transition-transform duration-700 group-hover:scale-105" onerror="this.src='./images/daily_dose_master.jpg'" />
+          </div>
+          <div class="mt-3 w-full flex items-baseline justify-between px-1">
+            <h3 class="font-serif text-2xl font-medium text-[#2C1A11] group-hover:text-[#8C5238] transition-colors">Mixes</h3>
+            <span class="text-xs text-[#7A6248]">11 signature blends</span>
+          </div>
+        </div>
+
+        <!-- Gift Hampers Category Card -->
+        <div onclick="location.href='#gifting';" class="group cursor-pointer flex flex-col items-start category-card-container reveal-delay-200">
+          <div class="w-full aspect-[4/5] rounded-t-[100px] rounded-b-2xl p-1 bg-[#EFE5D8] shadow-sm border border-[#E8DEC8]/80 relative overflow-hidden transition-all duration-300 group-hover:-translate-y-1.5">
+            <img src="./images/hamper.jpg" alt="Gift hampers" class="category-card-img w-full h-full object-cover rounded-t-[100px] rounded-b-2xl transition-transform duration-700 group-hover:scale-105" onerror="this.src='./images/hamper.jpg'" />
+          </div>
+          <div class="mt-3 w-full flex items-baseline justify-between px-1">
+            <h3 class="font-serif text-2xl font-medium text-[#2C1A11] group-hover:text-[#8C5238] transition-colors">Gift hampers</h3>
+            <span class="text-xs font-semibold text-[#8C5238]">₹999 to ₹9,999</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Shop Catalog Section -->
+  <section id="shop" class="py-16 px-4 sm:px-6 bg-[#FAF6F0]">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-left max-w-xl mb-8 reveal-on-scroll">
+        <h2 class="font-serif text-4xl sm:text-6xl font-normal text-[#2C1A11] tracking-tight leading-tight">
+          Shop the collection
+        </h2>
+        <p class="mt-4 text-base text-[#6E5C52] font-normal">
+          Pick a pack size and add it to your bag. Free delivery on orders over ₹1,999.
+        </p>
+      </div>
+
+      <!-- Filter Category Tabs -->
+      <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-6 reveal-on-scroll reveal-delay-100">
+        <button onclick="filterCategory('All')" data-category="All" class="cat-tab-btn px-5 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap bg-[#2C1A11] text-[#FAF6F0] shadow-sm">All Mixes (11)</button>
+        <button onclick="filterCategory('Mixes')" data-category="Mixes" class="cat-tab-btn px-5 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap bg-[#EFE7DA] text-[#7A6248] hover:bg-[#E2D6C3]">Mixes</button>
+        <button onclick="filterCategory('Gift hampers')" data-category="Gift hampers" class="cat-tab-btn px-5 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap bg-[#EFE7DA] text-[#7A6248] hover:bg-[#E2D6C3]">Gift Hampers</button>
+      </div>
+
+      <!-- Dynamic Product Grid -->
+      <div id="product-catalog-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mt-4">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Brand Story & Animated Counters -->
+  <section id="story" class="py-24 sm:py-32 px-4 sm:px-6 bg-[#FAF6F0] overflow-hidden">
+    <div class="max-w-4xl mx-auto flex flex-col items-center text-center">
+      
+      <!-- Arched Cherry Blossom Image Frame -->
+      <div class="w-full max-w-xs sm:max-w-md mx-auto mb-14 reveal-image">
+        <div class="w-full aspect-[4/5] rounded-t-[160px] sm:rounded-t-[200px] rounded-b-[40px] sm:rounded-b-[48px] overflow-hidden shadow-sm border border-[#E8DEC8]/60">
+          <img src="./images/cherry_blossoms.jpg" alt="SAJ Organics Story" class="w-full h-full object-cover" onerror="this.src='./images/kido_mix_master.jpg'" />
+        </div>
+      </div>
+
+      <!-- Story Text with exact typography & line spacing -->
+      <div class="max-w-2xl sm:max-w-3xl mx-auto text-center space-y-6 reveal-on-scroll">
+        <h2 class="story-headline text-center max-w-2xl mx-auto" style="line-height: 1.5 !important; font-family: 'Cormorant Garamond', Georgia, serif !important;">
+          At SAJ Organics, we believe healthy living starts with better everyday choices. We offer a thoughtfully curated range of delicious mixes, dried fruits, and wholesome snacks that combine taste, convenience, and nature’s goodness.
+        </h2>
+        
+        <p class="text-base sm:text-lg text-[#6E5C52] font-normal leading-relaxed text-center max-w-xl mx-auto pt-2">
+          With a focus on quality, freshness, and trust, our mission is to make mindful snacking simple and enjoyable for everyone.
+        </p>
+
+        <p class="font-serif text-xl sm:text-2xl text-[#8C5238] font-semibold tracking-wide pt-1">
+          SAJ Organics — Made for the Modern Lifestyle.
+        </p>
+
+        <div class="pt-4">
+          <a href="#shop" onclick="filterCategory('All')" class="inline-flex items-center gap-2 font-serif text-xl text-[#2C1A11] hover:text-[#8C5238] border-b border-[#2C1A11] hover:border-[#8C5238] pb-1 transition-all">
+            Start with our bestsellers →
+          </a>
+        </div>
+      </div>
+
+      <!-- Animated Counters -->
+      <div class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 w-full max-w-3xl pt-12 border-t border-[#EFE5D8]">
+        <div class="flex flex-col items-center text-center p-4">
+          <span class="animated-counter font-serif text-6xl sm:text-7xl font-normal text-[#2C1A11]" data-to="11">0</span>
+          <span class="text-sm text-[#7A6248] font-normal mt-2 max-w-[160px]">signature mixes crafted fresh</span>
+        </div>
+        <div class="flex flex-col items-center text-center p-4">
+          <span class="animated-counter font-serif text-6xl sm:text-7xl font-normal text-[#2C1A11]" data-to="3">0</span>
+          <span class="text-sm text-[#7A6248] font-normal mt-2 max-w-[160px]">pack options: 7, 15 & 30 days</span>
+        </div>
+        <div class="flex flex-col items-center text-center p-4">
+          <span class="animated-counter font-serif text-6xl sm:text-7xl font-normal text-[#2C1A11]" data-to="1999" data-prefix="₹">₹0</span>
+          <span class="text-sm text-[#7A6248] font-normal mt-2 max-w-[160px]">and above ships free</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 8. Quality Process Timeline with Animated Progress Connector Line -->
+  <section id="quality" class="py-24 px-4 sm:px-6 bg-[#2C1A11] text-[#FAF6F0] relative overflow-hidden">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-left max-w-xl mb-16">
+        <h2 class="font-serif text-4xl sm:text-6xl font-normal text-[#FAF6F0] tracking-tight leading-tight">
+          Careful at every step.
+        </h2>
+        <p class="mt-4 text-base sm:text-lg text-[#D5C5B5] font-normal leading-relaxed">
+          Freshness is not a claim on the label. It is a habit, from the first look to the last seal.
+        </p>
+      </div>
+
+      <div id="timeline-container" class="relative pl-16 sm:pl-20">
+        <!-- Track line spanning center of first dot (24px) -->
+        <div class="timeline-track-line"></div>
+        <!-- Animated Gold Progress Line emerging from Dot 1 -->
+        <div id="timeline-progress-line" class="timeline-progress-line"></div>
+
+        <!-- Steps List -->
+        <div class="space-y-12 sm:space-y-16">
+          <!-- Step 1 -->
+          <div class="relative cursor-pointer group">
+            <div class="timeline-step-node absolute -left-[48px] sm:-left-[64px] top-8 -translate-y-1/2">
+              <i data-lucide="check"></i>
+            </div>
+            <div class="timeline-step-card p-6 sm:p-8 rounded-3xl transition-all">
+              <div class="flex items-center gap-3 text-[#C88E52] mb-2">
+                <i data-lucide="leaf" class="w-5 h-5"></i>
+                <h3 class="font-serif text-2xl sm:text-3xl font-medium text-[#FAF6F0]">Sourced with care</h3>
+              </div>
+              <p class="text-sm sm:text-base text-[#D5C5B5] font-normal leading-relaxed max-w-xl mt-3">
+                We work with growers and suppliers who share our standards for size, colour and flavour.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="relative cursor-pointer group">
+            <div class="timeline-step-node absolute -left-[48px] sm:-left-[64px] top-8 -translate-y-1/2">
+              <i data-lucide="check"></i>
+            </div>
+            <div class="timeline-step-card p-6 sm:p-8 rounded-3xl transition-all">
+              <div class="flex items-center gap-3 text-[#C88E52] mb-2">
+                <i data-lucide="sparkles" class="w-5 h-5"></i>
+                <h3 class="font-serif text-2xl sm:text-3xl font-medium text-[#FAF6F0]">Sorted by hand</h3>
+              </div>
+              <p class="text-sm sm:text-base text-[#D5C5B5] font-normal leading-relaxed max-w-xl mt-3">
+                Every batch is checked and graded, so only the best pieces reach the pouch.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="relative cursor-pointer group">
+            <div class="timeline-step-node absolute -left-[48px] sm:-left-[64px] top-8 -translate-y-1/2">
+              <i data-lucide="check"></i>
+            </div>
+            <div class="timeline-step-card p-6 sm:p-8 rounded-3xl transition-all">
+              <div class="flex items-center gap-3 text-[#C88E52] mb-2">
+                <i data-lucide="lock" class="w-5 h-5"></i>
+                <h3 class="font-serif text-2xl sm:text-3xl font-medium text-[#FAF6F0]">Sealed for freshness</h3>
+              </div>
+              <p class="text-sm sm:text-base text-[#D5C5B5] font-normal leading-relaxed max-w-xl mt-3">
+                Small batches go into resealable pouches to protect crunch and aroma.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="relative cursor-pointer group">
+            <div class="timeline-step-node absolute -left-[48px] sm:-left-[64px] top-8 -translate-y-1/2">
+              <i data-lucide="check"></i>
+            </div>
+            <div class="timeline-step-card p-6 sm:p-8 rounded-3xl transition-all">
+              <div class="flex items-center gap-3 text-[#C88E52] mb-2">
+                <i data-lucide="package" class="w-5 h-5"></i>
+                <h3 class="font-serif text-2xl sm:text-3xl font-medium text-[#FAF6F0]">Delivered to your door</h3>
+              </div>
+              <p class="text-sm sm:text-base text-[#D5C5B5] font-normal leading-relaxed max-w-xl mt-3">
+                Packed carefully and dispatched quickly, so your order arrives as it should.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Gifting Section -->
+  <section id="gifting" class="py-20 px-4 sm:px-6 bg-[#FAF6F0]">
+    <div class="max-w-4xl mx-auto flex flex-col items-center text-center">
+      
+      <div class="w-full max-w-sm mb-8">
+        <div class="aspect-[4/5] rounded-t-[140px] rounded-b-3xl bg-[#EFE5D8] p-2 shadow-md border border-[#E8DEC8] flex items-center justify-center overflow-hidden">
+          <img id="hamper-image" src="./images/hamper.jpg" alt="Festive Hamper" class="w-full h-full object-cover rounded-t-[140px] rounded-b-3xl shadow-inner" onerror="this.src='./images/hamper.jpg'" />
+        </div>
+      </div>
+
+      <div class="max-w-xl text-center mb-8">
+        <h2 class="font-serif text-4xl sm:text-6xl font-normal text-[#2C1A11] tracking-tight leading-tight">
+          Gifting,  considered.
+        </h2>
+        <p class="mt-4 text-base text-[#6E5C52] font-normal leading-relaxed">
+          Curated hampers of premium dry fruits, wrapped and ready for festivals, weddings and thank-yous.
+        </p>
+      </div>
+
+      <div class="flex items-center gap-2 overflow-x-auto no-scrollbar mb-8">
+        <button onclick="selectHamperCategory('Festive')" data-category="Festive" class="hamper-tab-btn px-5 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap bg-[#2C1A11] text-[#FAF6F0] shadow-sm">Festive</button>
+        <button onclick="selectHamperCategory('Weddings')" data-category="Weddings" class="hamper-tab-btn px-5 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap bg-[#EFE7DA] text-[#7A6248] hover:bg-[#E2D6C3]">Weddings</button>
+        <button onclick="selectHamperCategory('Corporate')" data-category="Corporate" class="hamper-tab-btn px-5 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap bg-[#EFE7DA] text-[#7A6248] hover:bg-[#E2D6C3]">Corporate</button>
+      </div>
+
+      <div class="w-full max-w-lg bg-white/80 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-[#E8DEC8] text-left flex flex-col gap-4 shadow-sm">
+        <div class="flex items-baseline justify-between">
+          <h3 id="hamper-name" class="font-serif text-3xl font-medium text-[#2C1A11]">Festive hamper</h3>
+          <span id="hamper-price" class="font-serif text-xl sm:text-2xl font-bold text-[#8C5238]">₹999 to ₹9,999</span>
+        </div>
+
+        <p id="hamper-desc" class="text-sm text-[#6E5C52] font-normal leading-relaxed">
+          Almonds, cashews, dates and pistachios in a keepsake box, tied with ribbon. Fully customizable according to your celebration needs.
+        </p>
+
+        <div class="mt-4 flex flex-col gap-2.5">
+          <a id="customize-hamper-btn" href="https://wa.me/917869066707?text=Hi%20SAJ%20Organics,%20I%20would%20like%20to%20customize%20a%20Gift%20Hamper%20(Festive%20hamper,%20Price%20range:%20₹999%20to%20₹9,999).%20Please%20share%20the%20customization%20options%20and%20details." target="_blank" rel="noopener" class="w-full py-4 bg-[#2C1A11] hover:bg-[#3D2517] text-[#FAF6F0] font-medium text-base rounded-full transition-all shadow-md flex items-center justify-center gap-2.5 group cursor-pointer">
+            <i data-lucide="message-circle" class="w-5 h-5 text-[#25D366] transition-transform group-hover:scale-110"></i>
+            <span>Customize on WhatsApp</span>
+          </a>
+          <p class="text-xs text-center text-[#7A6248]">
+            <span class="font-medium text-[#2C1A11]">Price Range: ₹999 to ₹9,999</span> • Chat on WhatsApp to customize box sizing, dry fruits &amp; personalized message cards.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 10. Infinite Marquee Banner 2 -->
+  <div class="w-full overflow-hidden py-4 bg-[#EFE5D8] text-[#2C1A11] border-y border-[#E8DEC8] shadow-inner select-none relative z-20">
+    <div class="animate-marquee">
+      <div class="flex items-center gap-8 text-xs sm:text-sm font-semibold tracking-[0.25em] uppercase px-4 whitespace-nowrap">
+        <span>SEASONAL HAMPERS AVAILABLE NOW</span><span class="text-[#8C5238]">✦</span>
+        <span>FREE DELIVERY OVER ₹1,999</span><span class="text-[#8C5238]">✦</span>
+        <span>HAND-WRAPPED WITH CARE</span><span class="text-[#8C5238]">✦</span>
+        <span>PERFECT FOR FESTIVALS & WEDDINGS</span><span class="text-[#8C5238]">✦</span>
+        <span>CELEBRATE FRESHNESS DAILY</span><span class="text-[#8C5238]">✦</span>
+      </div>
+      <div class="flex items-center gap-8 text-xs sm:text-sm font-semibold tracking-[0.25em] uppercase px-4 whitespace-nowrap">
+        <span>SEASONAL HAMPERS AVAILABLE NOW</span><span class="text-[#8C5238]">✦</span>
+        <span>FREE DELIVERY OVER ₹1,999</span><span class="text-[#8C5238]">✦</span>
+        <span>HAND-WRAPPED WITH CARE</span><span class="text-[#8C5238]">✦</span>
+        <span>PERFECT FOR FESTIVALS & WEDDINGS</span><span class="text-[#8C5238]">✦</span>
+        <span>CELEBRATE FRESHNESS DAILY</span><span class="text-[#8C5238]">✦</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 11.5 Instagram Community & Barcode Section -->
+  <section class="py-16 px-4 sm:px-6 bg-[#EFE5D8]/60 border-t border-[#E8DEC8]">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10 bg-[#FAF6F0] rounded-[36px] p-8 sm:p-12 border border-[#E8DEC8] shadow-sm">
+      <div class="flex-1 flex flex-col items-start text-left gap-4">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EFE7DA] text-[#8C5238] text-xs font-semibold tracking-wider uppercase">
+          <i data-lucide="instagram" class="w-3.5 h-3.5"></i> @sajorganics
+        </span>
+        <h3 class="font-serif text-3xl sm:text-5xl font-normal text-[#2C1A11] tracking-tight leading-tight">
+          Join Our Instagram Community
+        </h3>
+        <p class="text-sm sm:text-base text-[#6E5C52] max-w-md font-normal leading-relaxed">
+          Scan the Instagram QR code with your camera or tap below to follow us for daily recipe inspiration, organic wellness tips, and exclusive secret batch drops.
+        </p>
+        <a href="https://instagram.com/sajorganics" target="_blank" rel="noopener" class="mt-2 inline-flex items-center gap-2.5 px-7 py-3 bg-[#2C1A11] text-[#FAF6F0] hover:bg-[#3D2517] font-medium text-sm rounded-full shadow-md transition-all btn-hover-lift">
+          <i data-lucide="instagram" class="w-4 h-4 text-[#C88E52]"></i>
+          <span>Follow @sajorganics</span>
+        </a>
+      </div>
+
+      <!-- Instagram QR Code Card -->
+      <div class="flex flex-col items-center group">
+        <div class="p-3 bg-white rounded-3xl shadow-md border border-[#E8DEC8] transition-transform duration-500 group-hover:scale-105">
+          <img src="./images/instagram_qr.jpg" alt="SAJ Organics Instagram QR Barcode @sajorganics" class="w-48 h-48 sm:w-56 sm:h-56 object-contain rounded-2xl" />
+        </div>
+        <span class="text-xs font-semibold text-[#8C5238] tracking-widest uppercase mt-3">Scan to follow @sajorganics</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. Footer -->
+  <footer class="bg-[#2C1A11] text-[#FAF6F0] py-16 px-4 sm:px-6 border-t border-[#3D2517]">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+      <div class="md:col-span-1 flex flex-col items-center text-center gap-3">
+        <a href="#" class="flex flex-col items-center select-none group">
+          <img src="./images/saj_logo_transparent.png" alt="SAJ Organics" class="w-24 h-24 sm:w-28 sm:h-28 object-contain filter brightness-110 transition-transform duration-300 group-hover:scale-105" />
+          <span class="text-[9px] sm:text-[10px] tracking-[0.18em] uppercase text-[#C88E52] font-semibold whitespace-nowrap mt-2">Made For The Modern Lifestyle</span>
+        </a>
+        <p class="text-xs text-[#D5C5B5] font-normal leading-relaxed max-w-xs">Wholesome signature mixes and luxury gift hampers, crafted with care.</p>
+      </div>
+
+      <div class="flex flex-col items-center text-center gap-3">
+        <h4 class="font-serif text-xl font-medium text-[#FAF6F0]">Shop</h4>
+        <ul class="space-y-2 text-xs text-[#D5C5B5]">
+          <li><a href="#shop" onclick="filterCategory('Mixes')" class="hover:text-white">Mixes (11 Signature Blends)</a></li>
+          <li><a href="#gifting" class="hover:text-white">Gift Hampers</a></li>
+        </ul>
+      </div>
+
+      <div class="flex flex-col items-center text-center gap-3">
+        <h4 class="font-serif text-xl font-medium text-[#FAF6F0]">Company</h4>
+        <ul class="space-y-2 text-xs text-[#D5C5B5]">
+          <li><a href="#story" class="hover:text-white">Our story</a></li>
+          <li><a href="#quality" class="hover:text-white">Quality</a></li>
+          <li><a href="tel:+917869066707" onclick="showToast('Contact: +91 7869066707 | sajorganics@gmail.com')" class="hover:text-white">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="flex flex-col items-center text-center gap-3">
+        <h4 class="font-serif text-xl font-medium text-[#FAF6F0]">Help</h4>
+        <ul class="space-y-2 text-xs text-[#D5C5B5]">
+          <li><a href="#" class="hover:text-white">Shipping</a></li>
+          <li><a href="#" class="hover:text-white">Returns</a></li>
+          <li><a href="#" class="hover:text-white">Privacy</a></li>
+          <li><a href="#" class="hover:text-white">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="max-w-5xl mx-auto mt-12 pt-8 border-t border-[#3D2517] flex flex-col sm:flex-row items-center justify-between text-xs text-[#D5C5B5] gap-4">
+      <p>© 2026 SAJ Organics. All rights reserved.</p>
+      <div class="flex items-center gap-2 bg-[#1A0E0A] px-3.5 py-1.5 rounded-full border border-[#3D2517] shadow-inner">
+        <span class="text-[#C88E52] font-semibold text-[11px] tracking-wider uppercase">FSSAI Lic. No.</span>
+        <span class="text-[#FAF6F0] font-mono text-xs font-semibold">21426115000352</span>
+      </div>
+      <div class="flex items-center gap-4 flex-wrap justify-center">
+        <a href="tel:+917869066707" class="hover:underline text-[#FAF6F0] flex items-center gap-1.5">
+          <i data-lucide="phone" class="w-3.5 h-3.5 text-[#C88E52]"></i>
+          <span>+91 7869066707</span>
+        </a>
+        <span class="text-[#3D2517]">•</span>
+        <a href="mailto:sajorganics@gmail.com" class="hover:underline text-[#FAF6F0]">sajorganics@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 13. Navigation Drawer -->
+  <div id="nav-backdrop" onclick="closeNav()" class="drawer-backdrop fixed inset-0 z-50 bg-[#2C1A11]/40 backdrop-blur-sm"></div>
+  <div id="nav-drawer" class="drawer-panel fixed top-0 right-0 z-50 w-full max-w-md bg-[#FAF6F0] h-full shadow-2xl flex flex-col justify-between p-6 sm:p-10 overflow-y-auto">
+    <div class="flex items-center justify-between nav-header-elem">
+      <div class="flex items-center gap-3">
+        <img src="./images/saj_logo_transparent.png" alt="SAJ Organics" class="w-12 h-12 sm:w-16 sm:h-16 object-contain" />
+        <span class="text-[9px] sm:text-[10px] tracking-[0.2em] uppercase text-[#8C5238] font-semibold whitespace-nowrap">Made For The Modern Lifestyle</span>
+      </div>
+      <button onclick="closeNav()" aria-label="Close menu" class="p-2 rounded-full hover:bg-[#EFE5D8] text-[#2C1A11] transition-transform duration-300 hover:rotate-90">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <nav class="my-auto py-8 flex flex-col gap-6">
+      <a href="#hero" onclick="handleNavSelect(event, 'hero')" class="nav-menu-link text-left font-serif text-4xl sm:text-5xl text-[#2C1A11]">Home</a>
+      <a href="#shop" onclick="handleNavSelect(event, 'shop')" class="nav-menu-link text-left font-serif text-4xl sm:text-5xl text-[#2C1A11]">Shop</a>
+      <a href="#story" onclick="handleNavSelect(event, 'story')" class="nav-menu-link text-left font-serif text-4xl sm:text-5xl text-[#2C1A11]">Our Story</a>
+      <a href="#quality" onclick="handleNavSelect(event, 'quality')" class="nav-menu-link text-left font-serif text-4xl sm:text-5xl text-[#2C1A11]">Quality</a>
+      <a href="#gifting" onclick="handleNavSelect(event, 'gifting')" class="nav-menu-link text-left font-serif text-4xl sm:text-5xl text-[#2C1A11]">Gift Hampers</a>
+    </nav>
+
+
+  </div>
+
+  <!-- 14. Cart Drawer -->
+  <div id="cart-backdrop" onclick="closeCart()" class="drawer-backdrop fixed inset-0 z-50 bg-[#2C1A11]/40 backdrop-blur-sm"></div>
+  <div id="cart-drawer" class="drawer-panel fixed top-0 right-0 z-50 w-full max-w-md bg-[#FAF6F0] h-full shadow-2xl flex flex-col justify-between">
+    <div class="p-6 border-b border-[#EFE5D8] flex items-center justify-between bg-[#FAF6F0]">
+      <h2 class="font-serif text-3xl font-medium text-[#2C1A11]">Your bag</h2>
+      <button onclick="closeCart()" aria-label="Close bag" class="p-2 rounded-full hover:bg-[#EFE5D8] text-[#2C1A11]">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+    <!-- Free Delivery Banner -->
+    <div class="bg-[#EFE5D8]/80 px-6 py-3 border-b border-[#E8DEC8]">
+      <p id="free-shipping-text" class="text-xs sm:text-sm text-[#2C1A11] font-medium text-center">Add ₹750 more for free delivery</p>
+      <div class="w-full bg-[#E5DAC8] h-1.5 rounded-full mt-2 overflow-hidden">
+        <div id="free-shipping-bar" class="bg-[#8C5238] h-full transition-all duration-500 rounded-full w-1/4"></div>
+      </div>
+    </div>
+
+    <!-- Cart Items List -->
+    <div id="cart-items-list" class="flex-1 overflow-y-auto p-6 space-y-6">
+      <!-- Dynamically rendered by app.js -->
+    </div>
+
+    <!-- Cart Footer Subtotal -->
+    <div class="p-6 border-t border-[#EFE5D8] bg-[#FAF6F0] flex flex-col gap-3">
+      <div class="flex items-center justify-between text-xs text-[#7A6248]">
+        <span>Items Subtotal</span>
+        <span id="cart-subtotal" class="font-medium text-sm text-[#2C1A11]">₹0</span>
+      </div>
+      <div class="flex items-center justify-between text-xs text-[#7A6248]">
+        <span>Shipping Charge</span>
+        <span id="cart-delivery-charge" class="font-semibold text-sm text-[#8C5238]">+ Shipping Charge</span>
+      </div>
+      <div class="flex items-center justify-between pt-2 border-t border-[#E8DEC8]">
+        <div>
+          <span class="font-serif text-xl font-normal text-[#2C1A11]">Total Amount</span>
+          <p class="text-[11px] text-[#7A6248] flex items-center gap-1 mt-0.5">
+            <i data-lucide="truck" class="w-3.5 h-3.5 text-[#8C5238]"></i>
+            <span>Est. Delivery: 5-7 Working Days</span>
+          </p>
+        </div>
+        <span id="cart-grand-total" class="font-serif text-2xl font-semibold text-[#2C1A11]">₹0</span>
+      </div>
+      <button onclick="openCheckoutModal()" class="w-full py-4 bg-[#2C1A11] text-[#FAF6F0] hover:bg-[#3D2517] font-medium text-base rounded-full shadow-md transition-all flex items-center justify-center gap-2 mt-1">
+        <span>Proceed to Checkout</span>
+        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- 14.5 Real Customer Checkout Modal -->
+  <div id="checkout-modal" class="modal-overlay fixed inset-0 z-[60] flex items-center justify-center p-4">
+    <div onclick="closeCheckoutModal()" class="fixed inset-0 bg-[#2C1A11]/60 backdrop-blur-md"></div>
+    <div class="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-[#FAF6F0] rounded-[32px] shadow-2xl border border-[#E8DEC8] z-10 p-6 sm:p-8 flex flex-col gap-5">
+      <div class="flex items-center justify-between border-b border-[#E8DEC8] pb-3">
+        <div class="flex items-center gap-2">
+          <i data-lucide="shopping-bag" class="w-6 h-6 text-[#8C5238]"></i>
+          <h3 class="font-serif text-2xl font-semibold text-[#2C1A11]">Customer Checkout</h3>
+        </div>
+        <button onclick="closeCheckoutModal()" class="p-1 text-[#7A6248] hover:text-[#2C1A11]"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+
+      <form id="checkout-form" onsubmit="processCustomerCheckout(event)" class="space-y-4">
+        <!-- Order Items Summary Box -->
+        <div class="p-4 bg-[#EFE5D8]/70 rounded-2xl border border-[#E8DEC8] flex flex-col gap-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs text-[#7A6248] uppercase font-bold">Total Amount Payable</span>
+            <span id="checkout-item-count" class="text-xs bg-[#2C1A11] text-[#FAF6F0] px-3 py-1 rounded-full font-medium">0 Items</span>
+          </div>
+          <div class="flex items-baseline justify-between">
+            <div id="checkout-total-val" class="font-serif text-3xl font-bold text-[#2C1A11]">₹0</div>
+            <div id="checkout-delivery-breakdown" class="text-xs text-[#7A6248] text-right font-medium">
+              + Shipping Charge
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5 text-xs text-[#8C5238] font-semibold pt-1.5 border-t border-[#E8DEC8]/60">
+            <i data-lucide="truck" class="w-4 h-4"></i>
+            <span>Estimated Delivery: 5-7 Working Days</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-[#7A6248] mb-1">Full Name *</label>
+            <input id="checkout-name" required type="text" placeholder="e.g. Ramesh Kumar" class="w-full px-3.5 py-2.5 bg-white border border-[#E8DEC8] rounded-xl text-xs text-[#2C1A11] focus:outline-none focus:ring-2 focus:ring-[#8C5238]" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-[#7A6248] mb-1">Mobile Contact *</label>
+            <input id="checkout-phone" required type="tel" placeholder="+91 9876543210" class="w-full px-3.5 py-2.5 bg-white border border-[#E8DEC8] rounded-xl text-xs text-[#2C1A11] focus:outline-none focus:ring-2 focus:ring-[#8C5238]" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-[#7A6248] mb-1">Delivery Address *</label>
+          <textarea id="checkout-address" required rows="2" placeholder="House/Flat No., Street, Landmark, City, Pincode..." class="w-full px-3.5 py-2.5 bg-white border border-[#E8DEC8] rounded-xl text-xs text-[#2C1A11] focus:outline-none focus:ring-2 focus:ring-[#8C5238]"></textarea>
+        </div>
+
+        <div class="pt-1">
+          <button type="submit" class="w-full py-4 bg-[#25D366] hover:bg-[#20BA59] text-white font-medium text-sm rounded-2xl shadow-md transition-all flex items-center justify-center gap-2 active:scale-[0.99]">
+            <i data-lucide="message-circle" class="w-5 h-5"></i>
+            <span>Confirm & Place Order on WhatsApp</span>
+          </button>
+          <p class="text-[11px] text-[#7A6248] text-center mt-2 leading-relaxed">
+            🌿 Your order receipt will open instantly on WhatsApp (+91 7869066707) with verified items, shipping details, and UPI payment confirmation.
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 15. Search Overlay Modal -->
+  <div id="search-modal" class="modal-overlay fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 px-4">
+    <div onclick="closeSearch()" class="fixed inset-0 bg-[#2C1A11]/50 backdrop-blur-md"></div>
+    <div class="relative w-full max-w-xl bg-[#FAF6F0] rounded-3xl shadow-2xl border border-[#E8DEC8] overflow-hidden z-10 p-6 flex flex-col gap-4">
+      <div class="relative flex items-center">
+        <i data-lucide="search" class="w-5 h-5 text-[#7A6248] absolute left-4"></i>
+        <input id="search-input" type="text" placeholder="Search mixes, superfood blends, hampers..." class="w-full pl-12 pr-10 py-3.5 bg-white border border-[#E8DEC8] rounded-full text-base text-[#2C1A11] placeholder-[#7A6248] focus:outline-none focus:ring-2 focus:ring-[#2C1A11]" />
+        <button onclick="closeSearch()" class="absolute right-4 p-1 text-[#7A6248]"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+
+      <div id="search-results-list" class="max-h-80 overflow-y-auto space-y-2 pt-2">
+        <!-- Rendered by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 16. Toast Notification -->
+  <div id="toast-banner" class="fixed bottom-6 right-6 z-[70] bg-[#2C1A11] text-[#FAF6F0] px-5 py-3 rounded-full shadow-2xl border border-[#C88E52]/40 text-sm font-medium flex items-center gap-2 max-w-[90vw]" style="display: none;">
+    <span>🌿</span> <span id="toast-text" class="truncate">Item added to bag</span>
+  </div>
+
+  <!-- 17. Admin Login Security PIN Modal -->
+  <div id="admin-login-modal" class="modal-overlay fixed inset-0 z-[60] flex items-center justify-center p-4">
+    <div onclick="closeAdminLoginModal()" class="fixed inset-0 bg-[#2C1A11]/60 backdrop-blur-md"></div>
+    <div class="relative w-full max-w-sm bg-[#FAF6F0] rounded-3xl shadow-2xl border border-[#C88E52]/40 overflow-hidden z-10 p-8 flex flex-col items-center text-center gap-5">
+      <div class="w-14 h-14 rounded-full bg-[#2C1A11] text-[#C88E52] flex items-center justify-center shadow-md">
+        <i data-lucide="lock" class="w-7 h-7"></i>
+      </div>
+      <div>
+        <h3 class="font-serif text-2xl font-semibold text-[#2C1A11]">Admin Portal</h3>
+        <p class="text-xs text-[#7A6248] mt-1">Enter Security Passcode to Access Store Suite</p>
+      </div>
+
+      <div class="w-full flex flex-col gap-3">
+        <input id="admin-pin-input" type="password" maxlength="10" placeholder="Enter Security Passcode" class="w-full text-center tracking-widest text-lg font-mono px-4 py-3 bg-white border border-[#E8DEC8] rounded-2xl text-[#2C1A11] focus:outline-none focus:ring-2 focus:ring-[#8C5238]" onkeyup="if(event.key==='Enter') verifyAdminPin()" />
+        <p id="admin-login-error" class="text-xs text-red-600 font-semibold hidden">Incorrect passcode. Please try again.</p>
+        <button onclick="verifyAdminPin()" class="w-full py-3 bg-[#8C5238] hover:bg-[#723F2A] text-white font-medium text-sm rounded-2xl shadow-sm transition-all">
+          Unlock Console
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 18. Main Admin Command Center Overlay Panel -->
+  <div id="admin-panel-modal" class="modal-overlay fixed inset-0 z-[70] flex items-center justify-center p-3 sm:p-6">
+    <div onclick="closeAdminPanel()" class="fixed inset-0 bg-[#2C1A11]/70 backdrop-blur-md"></div>
+    <div class="relative w-full max-w-5xl h-[92vh] bg-[#FAF6F0] rounded-[32px] shadow-2xl border border-[#E8DEC8] overflow-hidden z-10 flex flex-col">
+      
+      <!-- Admin Top Bar -->
+      <div class="p-4 sm:p-6 bg-[#2C1A11] text-[#FAF6F0] flex items-center justify-between border-b border-[#3D2517]">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-[#C88E52]/20 border border-[#C88E52]/40 flex items-center justify-center text-[#C88E52]">
+            <i data-lucide="sliders" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h2 class="font-serif text-xl sm:text-2xl font-medium tracking-wide leading-tight flex items-center gap-2">
+              SAJ Organics Command Center
+              <span class="text-[10px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-2 py-0.5 rounded-full font-sans font-semibold inline-flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Supabase Connected
+              </span>
+            </h2>
+            <p class="text-[11px] text-[#D5C5B5]">Cloud Database Active • Real-Time Multi-Device Sync across All Visitors</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="logoutAdmin()" title="Logout of Admin Console" class="px-3.5 py-1.5 rounded-xl bg-red-900/50 hover:bg-red-800 text-red-200 border border-red-700/60 text-xs font-semibold flex items-center gap-1.5 transition-all shadow-xs">
+            <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
+            <span>Logout</span>
+          </button>
+          <button onclick="closeAdminPanel()" aria-label="Exit Admin" class="p-2 rounded-full hover:bg-[#3D2517] text-[#FAF6F0] transition-colors">
+            <i data-lucide="x" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Admin Navigation Tabs Bar -->
+      <div class="bg-[#EFE7DA] border-b border-[#E8DEC8] px-4 sm:px-6 py-2.5 flex items-center gap-2 overflow-x-auto no-scrollbar">
+        <button onclick="switchAdminTab('analytics')" id="admin-tab-btn-analytics" class="admin-tab-btn active px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-[#2C1A11] text-[#FAF6F0] shadow-xs flex items-center gap-2 whitespace-nowrap">
+          <i data-lucide="bar-chart-3" class="w-4 h-4"></i> Analytics & Metrics
+        </button>
+        <button onclick="switchAdminTab('orders')" id="admin-tab-btn-orders" class="admin-tab-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-white text-[#7A6248] hover:bg-[#E2D6C3] flex items-center gap-2 whitespace-nowrap">
+          <i data-lucide="shopping-bag" class="w-4 h-4"></i> Orders & Sales
+        </button>
+        <button onclick="switchAdminTab('products')" id="admin-tab-btn-products" class="admin-tab-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-white text-[#7A6248] hover:bg-[#E2D6C3] flex items-center gap-2 whitespace-nowrap">
+          <i data-lucide="boxes" class="w-4 h-4"></i> Products & Inventory
+        </button>
+        <button onclick="switchAdminTab('add-product')" id="admin-tab-btn-add-product" class="admin-tab-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-white text-[#7A6248] hover:bg-[#E2D6C3] flex items-center gap-2 whitespace-nowrap">
+          <i data-lucide="plus-circle" class="w-4 h-4"></i> Add New Product
+        </button>
+        <button onclick="switchAdminTab('settings')" id="admin-tab-btn-settings" class="admin-tab-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-white text-[#7A6248] hover:bg-[#E2D6C3] flex items-center gap-2 whitespace-nowrap ml-auto">
+          <i data-lucide="settings" class="w-4 h-4"></i> Settings
+        </button>
+      </div>
+
+      <!-- Admin Scrollable Content Container -->
+      <div class="flex-1 overflow-y-auto p-4 sm:p-8 space-y-8">
+        
+        <!-- Tab 1: Analytics Dashboard -->
+        <div id="admin-tab-analytics" class="admin-tab-content space-y-8">
+          <!-- KPI Cards -->
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" id="admin-kpi-cards">
+            <!-- Dynamic KPI rendering -->
+          </div>
+
+          <!-- Category Sales Breakdown -->
+          <div class="bg-white rounded-3xl p-6 border border-[#E8DEC8] shadow-xs space-y-4">
+            <h3 class="font-serif text-2xl font-medium text-[#2C1A11] flex items-center gap-2">
+              <i data-lucide="pie-chart" class="w-5 h-5 text-[#8C5238]"></i> Category Distribution & Popularity
+            </h3>
+            <div id="admin-category-bars" class="space-y-3">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+          <!-- Activity Audit Log -->
+          <div class="bg-white rounded-3xl p-6 border border-[#E8DEC8] shadow-xs space-y-4">
+            <h3 class="font-serif text-2xl font-medium text-[#2C1A11] flex items-center gap-2">
+              <i data-lucide="activity" class="w-5 h-5 text-[#8C5238]"></i> Real-Time Activity Log
+            </h3>
+            <div id="admin-activity-log" class="space-y-2 text-xs text-[#7A6248] max-h-48 overflow-y-auto">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 1.5: Customer Orders & Sales -->
+        <div id="admin-tab-orders" class="admin-tab-content hidden space-y-6">
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="relative w-full sm:w-72">
+              <input id="admin-orders-search" type="text" placeholder="Search order ID, customer name or phone..." class="w-full pl-9 pr-4 py-2 bg-white border border-[#E8DEC8] rounded-xl text-xs text-[#2C1A11] focus:outline-none focus:ring-2 focus:ring-[#8C5238]" oninput="renderAdminOrdersList()" />
+              <i data-lucide="search" class="w-4 h-4 text-[#7A6248] absolute left-3 top-2.5"></i>
+            </div>
+            <div class="flex items-center gap-3 text-xs">
+              <span id="admin-orders-count" class="font-semibold text-[#8C5238]">Total Orders: 0</span>
+              <button onclick="clearAllOrders()" class="px-3 py-1.5 bg-red-100 text-red-700 hover:bg-red-600 hover:text-white rounded-xl font-medium text-[11px] transition-colors">Clear History</button>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-3xl border border-[#E8DEC8] shadow-xs overflow-hidden">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs text-[#2C1A11]">
+                <thead class="bg-[#EFE7DA] text-[#7A6248] uppercase tracking-wider text-[10px] font-bold">
+                  <tr>
+                    <th class="p-4">Order ID & Date</th>
+                    <th class="p-4">Customer Details</th>
+                    <th class="p-4">Items Purchased</th>
+                    <th class="p-4">Amount</th>
+                    <th class="p-4 text-center">Status</th>
+                    <th class="p-4 text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-orders-tbody" class="divide-y divide-[#EFE5D8]">
+                  <!-- Dynamic Orders Rows -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Products & Inventory Management -->
+        <div id="admin-tab-products" class="admin-tab-content hidden space-y-6">
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="relative w-full sm:w-72">
+              <input id="admin-product-search" type="text" placeholder="Search catalog..." class="w-full pl-9 pr-4 py-2 bg-white border border-[#E8DEC8] rounded-xl text-xs text-[#2C1A11] focus:outline-none focus:ring-2 focus:ring-[#8C5238]" oninput="renderAdminProductsList()" />
+              <i data-lucide="search" class="w-4 h-4 text-[#7A6248] absolute left-3 top-2.5"></i>
+            </div>
+            <span id="admin-products-count" class="text-xs font-semibold text-[#8C5238]">Total Products: 0</span>
+          </div>
+
+          <div class="bg-white rounded-3xl border border-[#E8DEC8] shadow-xs overflow-hidden">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs text-[#2C1A11]">
+                <thead class="bg-[#EFE7DA] text-[#7A6248] uppercase tracking-wider text-[10px] font-bold">
+                  <tr>
+                    <th class="p-4">Product</th>
+                    <th class="p-4">Category</th>
+                    <th class="p-4">Pricing</th>
+                    <th class="p-4 text-center">Stock Status</th>
+                    <th class="p-4 text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-products-tbody" class="divide-y divide-[#EFE5D8]">
+                  <!-- Dynamic Product Rows -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Add New Product -->
+        <div id="admin-tab-add-product" class="admin-tab-content hidden space-y-6">
+          <div class="bg-white rounded-3xl p-6 sm:p-8 border border-[#E8DEC8] shadow-xs max-w-2xl mx-auto space-y-6">
+            <h3 class="font-serif text-2xl font-medium text-[#2C1A11]">Add New Product To Store</h3>
+            
+            <form id="admin-add-product-form" onsubmit="handleAdminAddProduct(event)" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold text-[#7A6248] mb-1">Product Name *</label>
+                  <input id="new-prod-name" required type="text" placeholder="e.g. Macadamia Nuts" class="w-full px-3.5 py-2.5 bg-[#FAF6F0] border border-[#E8DEC8] rounded-xl text-xs text-[#2C1A11] focus:outline-none focus:ring-2 focus:ring-[#8C5238]" />
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-[#7A6248] mb-1">Subtitle / Grade *</label>
+                  <input id="new-prod-subtitle" required type="text" placeholder="e.g. Raw & Roasted Jumbo" class="w-full px-3.5 py-2.5 bg-[#FAF6F0] border border-[#E8DEC8] rounded-xl text-xs text-[#2C1A11] focus:outline-none focus:ring-2 focus:ring-[#8C5238]" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold text-[#7A6248] mb-1">Category *</label>
+                  <select id="new-prod-category" required onchange="handleNewProdCatChange()" class="w-full px-3.5 py-2.5 bg-[#FAF6F0] border border-[#E8DEC8] rounded-xl text-xs text-[#2C1A11] focus:outline-none focus:ring-2 focus:ring-[#8C5238]">
+                    <option value="Mixes" selected>Mixes</option>
+                    <option value="Gift hampers">Gift hampers</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-[#7A6248] mb-1">Bestseller Badge</label>
+                  <select id="new-prod-bestseller" class="w-full px-3.5 py-2.5 bg-[#FAF6F0] border border-[#E8DEC8] rounded-xl text-xs text-[#2C1A11] focus:outline-none focus:ring-2 focus:ring-[#8C5238]">
+                    <option value="false">Standard Product</option>
+                    <option value="true">Flag as Bestseller ⭐</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Pack Sizes & Prices -->
+              <div class="p-4 bg-[#FAF6F0] rounded-2xl border border-[#E8DEC8] space-y-3">
+                <span class="text-xs font-bold text-[#2C1A11] block">Price Options (in ₹)</span>
+                <div id="new-prod-prices-grid" class="grid grid-cols-3 gap-3">
+                  <!-- Dynamic price inputs depending on Category -->
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#7A6248] mb-1">Image URL / Local File Upload</label>
+                <div class="flex gap-2 items-center">
+                  <input id="new-prod-image" type="text" value="./images/almonds.jpg" placeholder="./images/almonds.jpg" class="flex-1 px-3.5 py-2.5 bg-[#FAF6F0] border border-[#E8DEC8] rounded-xl text-xs text-[#2C1A11] focus:outline-none focus:ring-2 focus:ring-[#8C5238]" oninput="const pv=document.getElementById('new-prod-img-preview'); if(pv) pv.src=this.value;" />
+                  <label class="px-3.5 py-2.5 bg-[#2C1A11] hover:bg-[#3D2517] text-[#FAF6F0] text-xs font-medium rounded-xl cursor-pointer whitespace-nowrap flex items-center gap-1.5 shadow-xs">
+                    <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+                    <span>Browse</span>
+                    <input type="file" id="new-prod-file-input" accept="image/*" class="hidden" onchange="handleImageFileUpload(event, 'new-prod-image', 'new-prod-img-preview')" />
+                  </label>
+                </div>
+                <div class="mt-2 flex items-center gap-2">
+                  <img id="new-prod-img-preview" src="./images/almonds.jpg" alt="Preview" class="w-10 h-10 object-cover rounded-lg border border-[#E8DEC8]" onerror="this.src='./images/almonds.jpg'" />
+                  <span class="text-[10px] text-[#7A6248]">Live image preview (Auto-optimizes uploaded photos)</span>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#7A6248] mb-1">Product Description *</label>
+                <textarea id="new-prod-desc" required rows="3" placeholder="Describe flavor notes, origin, health benefits..." class="w-full px-3.5 py-2.5 bg-[#FAF6F0] border border-[#E8DEC8] rounded-xl text-xs text-[#2C1A11] focus:outline-none focus:ring-2 focus:ring-[#8C5238]"></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-3.5 bg-[#8C5238] hover:bg-[#723F2A] text-white font-medium text-sm rounded-xl shadow-md transition-all">
+                Publish Product To Store
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Tab 4: Settings & Reset -->
+        <div id="admin-tab-settings" class="admin-tab-content hidden space-y-6">
+          <div class="bg-white rounded-3xl p-6 sm:p-8 border border-[#E8DEC8] shadow-xs max-w-xl mx-auto space-y-6">
+            <h3 class="font-serif text-2xl font-medium text-[#2C1A11]">Admin Security & Data Controls</h3>
+            
+            <div class="p-4 bg-[#FAF6F0] rounded-2xl border border-[#E8DEC8] space-y-3">
+              <h4 class="font-semibold text-xs text-[#2C1A11]">Change Security Passcode</h4>
+              <div class="flex gap-2">
+                <input id="new-admin-pin" type="password" placeholder="New Passcode" class="flex-1 px-3.5 py-2 bg-white border border-[#E8DEC8] rounded-xl text-xs" />
+                <button onclick="changeAdminPin()" class="px-4 py-2 bg-[#2C1A11] text-[#FAF6F0] text-xs font-medium rounded-xl hover:bg-[#3D2517]">Save</button>
+              </div>
+            </div>
+
+            <div class="p-4 bg-red-50 rounded-2xl border border-red-200 space-y-3">
+              <h4 class="font-semibold text-xs text-red-800">Factory Catalog Reset</h4>
+              <p class="text-xs text-red-600">Restores default catalog products and clears custom additions and edits.</p>
+              <button onclick="resetCatalogToFactory()" class="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white font-semibold text-xs rounded-xl shadow-xs">
+                Reset Store To Factory Defaults
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- 19. Admin Edit Product Modal -->
+  <div id="admin-edit-modal" class="modal-overlay fixed inset-0 z-[80] flex items-center justify-center p-4">
+    <div onclick="closeAdminEditModal()" class="fixed inset-0 bg-[#2C1A11]/60 backdrop-blur-md"></div>
+    <div class="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-[#FAF6F0] rounded-3xl shadow-2xl border border-[#E8DEC8] z-10 p-6 sm:p-8 flex flex-col gap-4">
+      <div class="flex items-center justify-between border-b border-[#E8DEC8] pb-3">
+        <h3 class="font-serif text-2xl font-medium text-[#2C1A11]">Edit Product Details</h3>
+        <button onclick="closeAdminEditModal()" class="p-1.5 text-[#7A6248] hover:text-[#2C1A11]"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+
+      <form id="admin-edit-product-form" onsubmit="handleAdminSaveEdit(event)" class="space-y-4">
+        <input type="hidden" id="edit-prod-id" />
+        
+        <div>
+          <label class="block text-xs font-semibold text-[#7A6248] mb-1">Product Name</label>
+          <input id="edit-prod-name" required type="text" class="w-full px-3.5 py-2 bg-white border border-[#E8DEC8] rounded-xl text-xs text-[#2C1A11]" />
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-[#7A6248] mb-1">Image URL / Local File Upload</label>
+          <div class="flex gap-2 items-center">
+            <img id="edit-prod-img-preview" src="" class="w-10 h-10 object-cover rounded-xl border border-[#E8DEC8] flex-shrink-0" onerror="this.src='./images/almonds.jpg'" />
+            <input id="edit-prod-image" required type="text" class="flex-1 px-3 py-2 bg-white border border-[#E8DEC8] rounded-xl text-xs text-[#2C1A11]" oninput="document.getElementById('edit-prod-img-preview').src=this.value" />
+            <label class="px-3 py-2 bg-[#2C1A11] hover:bg-[#3D2517] text-[#FAF6F0] text-xs font-medium rounded-xl cursor-pointer whitespace-nowrap flex items-center gap-1 shadow-xs">
+              <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+              <span>Browse</span>
+              <input type="file" id="edit-prod-file-input" accept="image/*" class="hidden" onchange="handleImageFileUpload(event, 'edit-prod-image', 'edit-prod-img-preview')" />
+            </label>
+          </div>
+        </div>
+
+        <!-- Dynamic Pack Prices Edit Grid -->
+        <div class="p-3.5 bg-[#FAF6F0] rounded-2xl border border-[#E8DEC8] space-y-2">
+          <label class="block text-xs font-bold text-[#2C1A11]">Edit Pack Prices (in ₹)</label>
+          <div id="edit-prod-prices-grid" class="grid grid-cols-3 gap-2">
+            <!-- Dynamic pack prices rendered by app.js -->
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-[#7A6248] mb-1">Stock Status</label>
+            <select id="edit-prod-instock" class="w-full px-3.5 py-2 bg-white border border-[#E8DEC8] rounded-xl text-xs text-[#2C1A11]">
+              <option value="true">In Stock</option>
+              <option value="false">Out of Stock</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-[#7A6248] mb-1">Bestseller Badge</label>
+            <select id="edit-prod-bestseller" class="w-full px-3.5 py-2 bg-white border border-[#E8DEC8] rounded-xl text-xs text-[#2C1A11]">
+              <option value="true">Bestseller ⭐</option>
+              <option value="false">Standard</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-[#7A6248] mb-1">Description</label>
+          <textarea id="edit-prod-desc" required rows="3" class="w-full px-3.5 py-2 bg-white border border-[#E8DEC8] rounded-xl text-xs text-[#2C1A11]"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-3 bg-[#8C5238] hover:bg-[#723F2A] text-white font-medium text-xs rounded-xl shadow-xs transition-all">
+          Save Changes
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Supabase JS Client Library -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- Application Logic -->
+  <script src="app.js"></script>
+
+  <!-- Initialize Lucide Icons -->
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
